@@ -154,7 +154,8 @@ LLM과 RAG 기술을 활용한 AI기반 미술관 도슨트 서비스
 
 | 서비스 구성도 | 시스템 구성도 |
 |---------------|---------------|
-| <img width="700" alt="image" src="https://github.com/user-attachments/assets/4d1a35a1-94cd-4e9a-9d65-77ba81888640" /> | <img width="442" alt="image" src="https://github.com/user-attachments/assets/24654a54-4c53-4b31-8604-854386241509" /> | 
+| <img width="700" height="450" alt="시나리오-2" src="https://github.com/user-attachments/assets/ebf44098-51b0-475d-baa6-13ff57a134b6" />| <img width="442" alt="image" src="https://github.com/user-attachments/assets/24654a54-4c53-4b31-8604-854386241509" /> | 
+
 
 |엔티티 관계도 |
 |---------------|
