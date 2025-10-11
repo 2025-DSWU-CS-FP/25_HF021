@@ -884,7 +884,7 @@ def predict_loop(cap: cv2.VideoCapture):
 def main():
     cap = cv2.VideoCapture(0)
     if not cap.isOpened():
-        print("❌ 카메라를 열 수 없습니다.")
+        print("error: 카메라를 열 수 없습니다.")
         return
 
     try:
@@ -975,7 +975,7 @@ def embed_crop(image_bgr: np.ndarray, clip_model: CLIPModel, clip_processor: CLI
 def search_faiss(vec: np.ndarray, index: faiss.Index, meta: list) -> Tuple[str, float]:
     """
     CLIP 벡터→FAISS 검색→ (art_id, score) 반환
-    ⚠️ 주의: index metric에 따라 score 해석 상이(L2=작을수록 유사 / IP=클수록 유사)
+    주의: index metric에 따라 score 해석 상이(L2=작을수록 유사 / IP=클수록 유사)
     """
     D, I = index.search(vec.reshape(1, -1), k=1)
     idx = int(I[0][0])
@@ -1061,13 +1061,13 @@ def run_loop(mode: str = "art", selected_q: str = SELECTED_Q_DEFAULT):
     # 모드 확인
     mode = mode.lower().strip()
     if mode not in ("art", "area"):
-        print("❌ 잘못된 모드입니다. 'art' 또는 'area' 중 선택.")
+        print("error: 잘못된 모드입니다. 'art' 또는 'area' 중 선택.")
         return
 
     # 카메라 시작
     cap = cv2.VideoCapture(0)
     if not cap.isOpened():
-        print("❌ 카메라를 열 수 없습니다.")
+        print("error: 카메라를 열 수 없습니다.")
         return
 
     latest_painting_id = None
@@ -1096,11 +1096,11 @@ def run_loop(mode: str = "art", selected_q: str = SELECTED_Q_DEFAULT):
                     # 그리기
                     draw_detection(frame, label, art_id, score, (x1, y1, x2, y2))
 
-            cv2.imshow("🎨 Art-Like Detection + FAISS", frame)
+            cv2.imshow("Art-Like Detection + FAISS", frame)
 
             # 감지되면 백엔드 전송하고 종료
             if found and latest_painting_id:
-                print(f"🖼️ 감지된 그림 ID: {latest_painting_id}")
+                print(f"감지된 그림 ID: {latest_painting_id}")
                 if mode == "art":
                     post_backend_art(latest_painting_id)
                 else:
@@ -1116,9 +1116,9 @@ def run_loop(mode: str = "art", selected_q: str = SELECTED_Q_DEFAULT):
         cv2.destroyAllWindows()
 
     if latest_painting_id:
-        print("🎉 명령 실행 후 프로그램을 종료합니다.")
+        print("명령 실행 후 프로그램을 종료합니다.")
     else:
-        print("👋 프로그램을 정상 종료했습니다.")
+        print("프로그램을 정상 종료했습니다.")
 
 # -------------------------------------------------
 # 6) 엔트리포인트
@@ -1131,7 +1131,7 @@ if __name__ == "__main__":
     elif cmd.startswith("/detect-area"):
         run_loop("area", SELECTED_Q_DEFAULT)  # 필요 시 selected_q를 동적으로 바꿔도 됨
     else:
-        print("❌ 잘못된 명령입니다. 프로그램을 종료합니다.")
+        print("error:잘못된 명령입니다. 프로그램을 종료합니다.")
 
 ```
 </details>
