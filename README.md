@@ -102,7 +102,7 @@ LLM과 RAG 기술을 활용한 AI기반 미술관 도슨트 서비스
     <tr>
       <td rowspan="4"><strong>H/W 구성장비</strong></td>
       <td>디바이스</td>
-      <td>Jetson Nano (Jetson Orin Nano Super) + 카메라 2대 + 버튼 2개</td>
+      <td>Jetson Nano (Jetson Orin Nano Super) + 카메라 2대 + usb 리모컨</td>
     </tr>
     <tr>
       <td>통신</td>
