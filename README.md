@@ -165,7 +165,7 @@ LLM과 RAG 기술을 활용한 AI기반 미술관 도슨트 서비스
 |소프트웨어 아키텍처 | 
 | <img alt="소프트웨어 아키텍처" src="https://github.com/user-attachments/assets/fd473c00-e4a8-43a2-a77a-700d3a756f56" />|
 |하드웨어 설계 |
-| <img alt="image" src="https://github.com/user-attachments/assets/4e133f2f-6b13-40d0-9060-bb3cd9544da1" /> |
+| <img alt="image" src="https://github.com/user-attachments/assets/0949f869-6451-42fb-b65e-b94d873ded62" />|
 
 <br />
 
