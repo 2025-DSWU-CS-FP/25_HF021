@@ -66,7 +66,7 @@ def fetch_met_data():
             "crops": []
         })
 
-        print(f"✅ [{i+1}] {title} (objectID: {object_id})")
+        print(f"[{i+1}] {title} (objectID: {object_id})")
 
     # FAISS 인덱스 생성 (CLIP 텍스트 임베딩)
     def embed_text(text):
@@ -90,7 +90,7 @@ def fetch_met_data():
     with open("./data/faiss/met_structured_with_objects.json", "w", encoding="utf-8") as f:
         json.dump(structured_data, f, indent=2, ensure_ascii=False)
 
-    print("✅ 모든 파일 저장 완료!")
+    print("OK: 모든 파일 저장 완료!")
 
 if __name__ == "__main__":
     fetch_met_data()
