@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  springboot:
+    container_name: eyedia
+    image: mumulmanager/dev-eyedia-be:latest
+    ports:
+      - 8080:8080
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRATION: ${JWT_EXPIRATION}
+      RDS_USERNAME: ${RDS_USERNAME}
+      RDS_PASSWORD: ${RDS_PASSWORD}
+      RDS_URL: ${RDS_URL}
+      S3_REGION: ${S3_REGION}
+      S3_ACCESSKEY: ${S3_ACCESSKEY}
+      S3_SECRETKEY: ${S3_SECRETKEY}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
