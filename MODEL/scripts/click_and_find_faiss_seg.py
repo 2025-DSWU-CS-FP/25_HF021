@@ -19,7 +19,7 @@ BACKEND_OBJECT_DESC_URL = os.getenv("BACKEND_OBJECT_DESC_URL", "http://localhost
 def load_meta(structured_path="data/faiss/met_structured_with_objects.json"):
     path = Path(structured_path)
     if not path.exists():
-        raise FileNotFoundError(f"❗ 메타 데이터 파일이 없습니다: {path}")
+        raise FileNotFoundError(f"error: 메타 데이터 파일이 없습니다: {path}")
     with open(path, "r", encoding="utf-8") as f:
         structured = json.load(f)
     meta = []
@@ -65,12 +65,12 @@ def gpt_docent_ko(crop_description: str) -> str:
 def detect_and_send_crop(image_path):
     print(f"▶ 이미지 경로: {image_path}")
     if not os.path.exists(image_path):
-        print("❗ 이미지 경로가 존재하지 않음")
+        print("error: 이미지 경로가 존재하지 않음")
         return
 
     image = cv2.imread(image_path)
     if image is None:
-        print("❗ 이미지 로드 실패")
+        print("error: 이미지 로드 실패")
         return
     image = cv2.resize(image, (1280, 720))
 
@@ -78,7 +78,7 @@ def detect_and_send_crop(image_path):
     results = yolo(image, conf=0.3)[0]
 
     if results.masks is None or results.boxes is None:
-        print("❗ 감지된 객체가 없습니다.")
+        print("error: 감지된 객체가 없습니다.")
         return
 
     masks_np = results.masks.data.cpu().numpy()
@@ -123,7 +123,7 @@ def detect_and_send_crop(image_path):
 
         key = cv2.waitKey(30) & 0xFF
         if key == ord('q'):
-            print("🛑 종료 요청")
+            print("종료 요청")
             cv2.destroyAllWindows()
             return
 
@@ -154,15 +154,15 @@ def detect_and_send_crop(image_path):
                     continue
 
             if best_match is None or max_score < 0.0:
-                print("❌ 유사한 crop을 찾지 못했습니다.")
+                print("Warn: 유사한 crop을 찾지 못했습니다.")
                 selected_idx = -1
                 continue
 
-            # 1️⃣ GPT 증강
+            # 1 GPT 증강
             docent_description = gpt_docent_ko(best_match["crop_description"])
             print(f"[GPT 도슨트 설명]\n{docent_description}")
 
-            # 2️⃣ 백엔드로 전송
+            # 2 백엔드로 전송
             payload = {
                 "objectId": best_match["crop_id"],
                 "description": docent_description,
