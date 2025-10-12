@@ -142,7 +142,7 @@ def crop_and_describe_objects(item):
         D, I = faiss_index.search(emb, 1)
         summary = summaries[I[0][0]]
 
-        # ✅ 여러 사분면 계산
+        # OK: 여러 사분면 계산
         quads, ratios = get_quadrants_for_bbox(
             x1, y1, x2, y2, w, h,
             min_ratio=MIN_RATIO,
@@ -180,7 +180,7 @@ def run():
         print(f"[{idx+1}/{len(data)}] 이미지: {item.get('image_path', '')}")
         item["crops"] = crop_and_describe_objects(item)
 
-        # ✅ 각 crop의 quadrant 확인 (다중 사분면 로직 대응 + 후방 호환)
+        # OK: 각 crop의 quadrant 확인 (다중 사분면 로직 대응 + 후방 호환)
     for crop in item["crops"]:
         primary = crop.get("primary_quadrant") or crop.get("quadrant")  # 예전 필드 호환
         quads   = crop.get("quadrants") or ([crop["quadrant"]] if "quadrant" in crop else [])
@@ -202,7 +202,7 @@ def run():
 
     with open(DATA_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
-    print("\n✅ crop 생성 및 유사 객체 기반 설명 자동 생성 완료")
+    print("\nOK: crop 생성 및 유사 객체 기반 설명 자동 생성 완료")
 
 if __name__ == "__main__":
     run()
