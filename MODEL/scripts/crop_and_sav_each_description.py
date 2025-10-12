@@ -142,13 +142,13 @@ def run():
         print(f"[{idx+1}/{len(data)}] 이미지: {item.get('image_path', '')}")
         item["crops"] = crop_and_describe_objects(item)
 
-        # ✅ 각 crop의 quadrant 확인
+        # OK: 각 crop의 quadrant 확인
         for crop in item["crops"]:
             print(f"    - crop_id: {crop['crop_id']} | quadrant: {crop['quadrant']}")
 
     with open(DATA_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
-    print("\n✅ crop 생성 및 유사 객체 기반 설명 자동 생성 완료")
+    print("\nOK: crop 생성 및 유사 객체 기반 설명 자동 생성 완료")
 
 if __name__ == "__main__":
     run()
