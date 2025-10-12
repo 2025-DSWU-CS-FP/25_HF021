@@ -92,7 +92,7 @@ def append_custom_to_met(custom_images):
         emb = embed_text(summary)[0]
         new_embeddings.append(emb)
 
-        print(f"✅ 추가 완료: {item['title']} ({item['objectID']})")
+        print(f"OK: 추가 완료: {item['title']} ({item['objectID']})")
 
     # === FAISS에 벡터 추가 ===
     new_embeddings = np.stack(new_embeddings).astype("float32")
@@ -105,7 +105,7 @@ def append_custom_to_met(custom_images):
     with open(STRUCT_PATH, "w", encoding="utf-8") as f:
         json.dump(structured_data, f, indent=2, ensure_ascii=False)
 
-    print("✅ Custom 이미지가 기존 Met 데이터에 병합 완료!")
+    print("OK: Custom 이미지가 기존 Met 데이터에 병합 완료!")
 
 if __name__ == "__main__":
     append_custom_to_met(custom_images)
