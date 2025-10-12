@@ -184,7 +184,7 @@ def find_structured_record_for_rep(rep_meta: dict) -> dict | None:
 # ── 메인 루프 ──────────────────────────────────────────────────────────
 def detect_and_search(image_path):
     if not os.path.exists(image_path):
-        print(f"❗ 파일 없음: {image_path}")
+        print(f"error: 파일 없음: {image_path}")
         return
 
     image_bgr = cv2.imread(image_path)
@@ -196,7 +196,7 @@ def detect_and_search(image_path):
     yolo = YOLO("yolov8n-seg.pt")
     results = yolo(image_pil)[0]
     if results.boxes is None or len(results.boxes) == 0:
-        print("❗ 객체가 감지되지 않음")
+        print("error: 객체가 감지되지 않음")
         return
 
     # 1) 대표 작품 결정 (CLIP→FAISS)
@@ -206,7 +206,7 @@ def detect_and_search(image_path):
     rep_meta = faiss_meta[rep_idx] if 0 <= rep_idx < len(faiss_meta) else {}
     rep_title  = rep_meta.get("title", "Unknown Artwork")
     rep_artist = rep_meta.get("artist", "Unknown Artist")
-    print(f"🎨 대표 작품 결정: {rep_title} by {rep_artist}")
+    print(f"대표 작품 결정: {rep_title} by {rep_artist}")
 
     # 2) structured에서 이 대표작 레코드 찾기 (id 매칭)
     structured_rec = find_structured_record_for_rep(rep_meta)
@@ -235,7 +235,7 @@ def detect_and_search(image_path):
         if click_pos["x"] != -1:
             cx, cy = click_pos["x"], click_pos["y"]
             quadrant = get_quadrant(cx, cy, w, h)
-            print(f"✅ 클릭된 분면: {quadrant}")
+            print(f"OK: 클릭된 분면: {quadrant}")
 
             # 3) (중요) structured에서 분면별 crop_description 뽑기
             desc_list = get_crop_descriptions_from_structured(structured_rec, quadrant, top_k=5)
