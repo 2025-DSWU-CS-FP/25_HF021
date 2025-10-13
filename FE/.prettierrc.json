@@ -1,0 +1,28 @@
+{
+  "singleQuote": true,
+  "semi": true,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "printWidth": 80,
+  "endOfLine": "auto",
+  "arrowParens": "avoid",
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "importOrder": [
+    "^react(/.*)?$",
+    "^react-router-dom(/.*)?$",
+    "^react-dom(/.*)?$",
+    "^@tanstack/(.*)$",
+    "^@/hooks/(.*)$",
+    "^@/services/(.*)$",
+    "^@/atoms/(.*)$",
+    "^@/utils/(.*)$",
+    "^@/styles/(.*)$",
+    "^[./]",
+    "<THIRD_PARTY_MODULES>",
+    "^@/layouts/(.*)&",
+    "^@/pages/(.*)$",
+    "^@/components/(.*)$"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}

@@ -1,0 +1,1 @@
+import{j as o,Q as a}from"./index-D9A7aE9K.js";function u({children:t,className:r="bg-brand-blue hover:bg-brand-blue/80",onClick:e,disabled:n}){return o.jsx("button",{type:"button",onClick:e,disabled:n,className:a(r,"w-full whitespace-nowrap rounded-[6px] px-[1.8rem] py-[1.2rem] text-gray-0 transition"),children:t})}export{u as B};

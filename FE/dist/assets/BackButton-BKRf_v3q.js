@@ -1,0 +1,1 @@
+import{a as s,j as e,T as r}from"./index-D9A7aE9K.js";function o({className:t=""}){const a=s();return e.jsx("div",{className:"flex h-[6rem] w-full items-center",children:e.jsx("button",{type:"button","aria-label":"뒤로가기",onClick:()=>a(-1),className:`ml-[2.2rem] text-[2rem] text-gray-100 ${t}`,children:e.jsx(r,{})})})}export{o as B};
